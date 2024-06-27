@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- x-data adalah definition dari pembuatan suatu element menjadi object yang dapat diketahui oleh alpine.js -->
+    <div x-data="{message : 'Alpine JS is awesome'}">
+      <p x-text="message"></p>
+    </div>
+
+    <!-- H1 -->
+    <h1 x-data="{Htext : 'Hello this is H1'}" x-text="Htext"></h1>
+
+    <!--  -->
+    <!-- Multiple Data object component -->
+    <div
+      x-data="{
+        name : 'Aditya',
+        email : 'adit@gmail.com',
+        number : 22
+    }"
+    >
+      <ul>
+        <li x-text="name"></li>
+        <li x-text="email"></li>
+        <li x-text="number"></li>
+      </ul>
+    </div>
+
+    <!--  -->
+    <!-- Multiple data via Function. INGAT BRACES HANYA UNTUK OBJECT -->
+    <div x-data="userDetail()">
+      <ul>
+        <li x-text="name"></li>
+        <li x-text="email"></li>
+        <li x-text="number"></li>
+      </ul>
+    </div>
+
+    <!--  -->
+    <!-- Alpine JS tidak akan bekerja di luar Component -->
+    <div x-data="{message : 'Alpine JS is awesome'}"></div>
+    <p x-text="message"></p>
+
+    <!--  -->
+    <!-- Lalu bagaimana dengan diluar Nested Component? -->
+    <div x-data="{message : 'Alpine JS is awesome'}">
+      <div x-data="{message2 : 'Alpine JS is EZ'}">
+        <div x-data="{message3 : 'Message3'}">
+          <p x-text="message"></p>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- Kita bisa menggunakan Logika Pemrograman dalam Component -->
+    <div x-data="{message : 'Alpine JS is awesome'}">
+      <div x-data="{message2 : 'Alpine JS is EZ'}">
+        <div x-data="{message3 : 'Message3'}">
+          <p x-text="message + ' ' + message3"></p>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- x-data bisa empty juga dan akan tetap di inisiasi menjadi component -->
+    <!-- tidak akan di proses krn tidka ada braces -->
+    <div x-data><p x-text="3 + 3"></p></div>
+    <!-- akan di proses krn  ada braces -->
+    <div x-data="{}"><p x-text="3 + 3"></p></div>
+    <div x-data=""><p x-text="3 + 3"></p></div>
+
+    <script>
+      function userDetail() {
+        return { name: "Aditya2", email: "adit@gmail.com", number: 22 };
+      }
+    </script>
+  </body>
+</html>
