@@ -9,5 +9,39 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <!--  -->
+    <!-- x-model di gunakan untuk 2 way data binding di alpine.js. kita dapat mendapatkan data dari input mana saja dan diproses ulang dalam component yang sama -->
+    <div x-data="{name : ''}">
+      <label for="">Name : </label>
+      <input type="text" x-model="name" />
+      <p x-text="'My name is' + name"></p>
+    </div>
+
+    <!--  -->
+    <!-- 2 way data binding juga dapat di duplikasikan ke input yang lain -->
+    <div x-data="{name : ''}">
+      <input type="text" x-model="name" />
+      <input type="text" x-model="name" />
+    </div>
+    <br />
+    <!--  -->
+    <!-- Contoh lain menggunakan SELECT option -->
+    <!-- Akan mengacu terhadap Valuenya -->
+    <div x-data="{myColor : ''}">
+      <select name="" x-model="myColor">
+        <option value="">Select A color</option>
+        <option value="Red">Red</option>
+        <option value="Green">Green</option>
+        <option value="Yellow">Yellow</option>
+      </select>
+      <!-- ini penggunaan IF NOT -->
+      <!-- <p x-show="myColor != ''"> -->
+      <!-- Dibawah ini penggunaan Boolean jika tidak null -->
+      <p x-show="myColor">
+        My Favorite Colors :
+        <span x-text="myColor"></span>
+      </p>
+    </div>
+  </body>
 </html>
