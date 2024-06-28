@@ -51,7 +51,8 @@
 
     <!-- contoh 2 -->
     <div x-data="{number : 0}">
-      <button x-on:click="number--">Decrement</button>
+      <!-- akan di show jika number > 0-->
+      <button x-on:click="number--" x-show="number > 0">Decrement</button>
       <button x-on:click="number++">Increment</button>
       <p x-text="number"></p>
     </div>
