@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!--  -->
+    <!-- Display atau hide element didalam alpine component X-show -->
+    <div x-data="{condition : false}">
+      <p x-show="condition">Display this text if 'show' is true</p>
+    </div>
+
+    <!--  -->
+    <!-- contoh jika satunya true satunya false dalam 1 component -->
+    <div x-data="{ show : false}">
+      <p x-show="show">Display text if show is true</p>
+      <!-- IF LOGIC -->
+      <p x-show="show == false">Display text if show is true</p>
+      <!-- NOT OPERATOR -->
+      <p x-show="!show">Display text if show is true</p>
+    </div>
+
+    <!--  -->
+    <!-- x-on untuk click (event handler) -->
+    <div x-data="{ show : false}">
+      <p x-show="show">X-on Display True</p>
+      <button x-on:click="show = true">Show</button>
+    </div>
+    <br />
+
+    <!--  -->
+    <!-- State logic true false toggle -->
+    <div x-data="{ show : false}">
+      <p x-show="show">Toggled</p>
+      <button x-on:click="show = !show">Toggle</button>
+    </div>
+    <br />
+
+    <!--  -->
+    <!-- Execute JS function terhadap Function -->
+    <div x-data="">
+      <button x-on:click="alert('the button has been clicked')">Alert</button>
+    </div>
+    <br />
+
+    <!-- contoh 2 -->
+    <div x-data="{number : 0}">
+      <button x-on:click="number--">Decrement</button>
+      <button x-on:click="number++">Increment</button>
+      <p x-text="number"></p>
+    </div>
+  </body>
+</html>
